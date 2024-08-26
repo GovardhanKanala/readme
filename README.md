@@ -118,6 +118,9 @@ Copy this content into your `README.md` file on GitHub, and it should be all set
 
 
 
+kubectl get policyreport -n dev -o custom-columns=NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.status,RESULTS:.status.results
+
+
 
 
 
