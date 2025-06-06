@@ -1,4 +1,4 @@
-# Kyverno Custom Helm Chart ##
+# Kyverno Custom Helm Chart ###
 
 ## Overview
 
@@ -11,6 +11,7 @@ This repository contains a custom Helm chart for deploying Kyverno policies acro
 ## Acceptance Criteria
 
 ### 1. Helm Chart Initialization
+
 - The Helm chart is structured with:
   - `Chart.yaml`
   - `values.yaml`
@@ -18,6 +19,7 @@ This repository contains a custom Helm chart for deploying Kyverno policies acro
 - The chart includes all required Kubernetes resources for Kyverno (e.g., `ClusterPolicy`, `Policy`, `ConfigMap`, `Secret`, `ServiceAccount`, `Role`, `RoleBinding`).
 
 ### 2. Customizable Parameters
+
 - `values.yaml` includes:
   - Image repository and tag.
   - Resource limits and requests (CPU, memory).
@@ -28,6 +30,7 @@ This repository contains a custom Helm chart for deploying Kyverno policies acro
   - Kyverno policy configurations (e.g., policy categories, logging levels, webhook settings).
 
 ### 3. Environment-Specific Values
+
 - Separate values files are provided for each environment:
   - `values-dev.yaml`
   - `values-beta.yaml`
@@ -36,17 +39,20 @@ This repository contains a custom Helm chart for deploying Kyverno policies acro
 - Each environment is configured with appropriate settings for resource limits, replica counts, and logging levels.
 
 ### 4. Security and Compliance
+
 - The Helm chart includes secure defaults, such as:
   - Non-root containers.
   - Necessary RBAC permissions.
 - Integration options with external secrets management solutions (e.g., HashiCorp Vault) are available.
 
 ### 5. Testing and Validation
+
 - `helm test` templates validate deployment in each environment.
 - The chart passes validation checks (`helm lint` returns no errors).
 - Integration testing ensures Kyverno policies are correctly applied and enforced.
 
 ### 6. Documentation
+
 - Comprehensive documentation is included, covering:
   - Installation instructions.
   - Environment-specific configurations.
@@ -54,20 +60,24 @@ This repository contains a custom Helm chart for deploying Kyverno policies acro
 - A changelog file tracks updates and changes to the Helm chart.
 
 ### 7. Deployment Automation
+
 - Deployment is automated using GitHub Actions, with integration into the CI/CD pipeline.
 - Deployments to each environment are triggered automatically on branch merges (`dev`, `beta`, `stg`, `prod`).
 
 ### 8. Rollback Mechanism
+
 - A rollback mechanism is implemented to revert to previous Kyverno deployments if issues arise.
 - The rollback procedure is documented within the Helm chart documentation.
 
 ### 9. Review and Approval
+
 - Approval from key stakeholders (security, operations) is obtained before finalizing the Helm chart.
 - Feedback is addressed and incorporated into the final chart.
 
 ## Getting Started
 
 ### Prerequisites
+
 - Kubernetes cluster (1.19+)
 - Helm 3.x
 - Access to a container registry for Kyverno images
@@ -79,7 +89,7 @@ This repository contains a custom Helm chart for deploying Kyverno policies acro
    ```bash
    helm repo add kyverno-custom https://your-repo-url/kyverno-custom
    helm repo update
-
+   ```
 
 Install the Helm chart:
 
@@ -116,12 +126,4 @@ Copy code
 
 Copy this content into your `README.md` file on GitHub, and it should be all set!
 
-
-
 kubectl get policyreport -n dev -o custom-columns=NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.status,RESULTS:.status.results
-
-
-
-
-
-
